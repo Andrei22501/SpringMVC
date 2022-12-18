@@ -1,24 +1,24 @@
 package web.models;
 
 public class Car {
-    private Long number;
+    private int number;
     private String model;
     private int manufacture;
 
     public Car() {
     }
 
-    public Car(Long number, String model, int manufacture) {
+    public Car(int number, String model, int manufacture) {
         this.number = number;
         this.model = model;
         this.manufacture = manufacture;
     }
 
-    public Long getNumber() {
+    public int getNumber() {
         return number;
     }
 
-    public void setNumber(Long number) {
+    public void setNumber(int number) {
         this.number = number;
     }
 

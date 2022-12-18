@@ -7,23 +7,22 @@ import java.util.ArrayList;
 import java.util.List;
 @Component
 public class CarDAO {
-    private List<Car> carList;
-
+    private List<Car> car;
+    private static int COUNT;
     {
-    carList = new ArrayList<>();
+    car = new ArrayList<>();
 
-    carList.add(new Car(1182374L,"Black Angus(Burger)", 1998));
-    carList.add(new Car(5169785L, "Schevrolet Impala", 1967));
-    carList.add(new Car(20180318L, "Nissan Premier", 1997));
-    carList.add(new Car(5152798L, "Кузов на колёсах", 2021));
-    carList.add(new Car(20220715L,"Летит крузак двухсотый", 2034));
-
+    car.add(new Car(++COUNT,"Black Angus(Burger)", 1998));
+    car.add(new Car(++COUNT, "Schevrolet Impala", 1967));
+    car.add(new Car(++COUNT, "Nissan Premier", 1997));
+    car.add(new Car(++COUNT, "Кузов на колёсах", 2021));
+    car.add(new Car(++COUNT,"Летит крузак двухсотый", 2034));
     }
-    public  List<Car> index(){
-        return carList;
+    public  List<Car> carList(){
+        return car;
     }
 
     public Car show(int id){
-        return carList.stream().filter(person-> person.getNumber() == id).findAny().orElse(null);
+        return car.stream().filter(person-> person.getNumber() == id).findAny().orElse(null);
     }
 }
