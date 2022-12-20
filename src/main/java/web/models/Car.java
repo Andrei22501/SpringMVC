@@ -1,6 +1,7 @@
 package web.models;
 
 public class Car {
+    private int id;
     private int number;
     private String model;
     private int manufacture;
@@ -12,6 +13,18 @@ public class Car {
         this.number = number;
         this.model = model;
         this.manufacture = manufacture;
+    }
+
+    public Car(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getNumber() {
@@ -28,6 +41,15 @@ public class Car {
 
     public void setModel(String model) {
         this.model = model;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "number=" + number +
+                ", model='" + model + '\'' +
+                ", manufacture=" + manufacture +
+                '}';
     }
 
     public int getManufacture() {

@@ -7,34 +7,26 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import web.dao.CarDAO;
+import web.dao.CarDAOImp;
 import web.models.Car;
+import web.service.CarService;
 
 @Controller
 @RequestMapping()
 public class CarController {
-    private int i = 1;
-    private final CarDAO carDAO;
+    public int i = 1;
+    private final CarService carService;
     @Autowired
-    public CarController(CarDAO carDAO) {
-        this.carDAO = carDAO;
+    public CarController(CarService carService) {
+        this.carService = carService;
     }
     @GetMapping("/cars")
     public String index(@RequestParam(value = "count", defaultValue = "5") int count, Model model){
-        model.addAttribute("car1s", carDAO.carList());
-            for (Car car : carDAO.carList()) {
-                if (i <= count) {
-                    System.out.println("ID Машины: " + car.getNumber() + "|" + " Модель: " + car.getModel() + "|" + " Год выпуска: " + car.getManufacture());
-                }
-                i++;
-            }
+        model.addAttribute("car1s", carService.carList(count));
         return "car";
     }
-//    @GetMapping()
-//    public String cars(@RequestParam("count") int count) {
-//        for (Car car : carDAO.carList()) {
-//            System.out.println(car.getNumber() + car.getModel() + car.getManufacture());
-//        }
-//    return "car";
-//    }
-
+//        Я безнадёжен, после комментария ментора начал сразу решать по другому, создавать класс сервайс и там всё настраивать.
+//        думал что цель задания вывод в консоль должна быть, а не в таблице самой :)
+//    а ещё, так как я писал на 8 версии JDK, я максимально долго тупил, и не мог понять, почему у меня возникла проблема со стримами
+//    и нихрена не получается.
 }
